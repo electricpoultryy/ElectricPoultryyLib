@@ -74,6 +74,7 @@ publishing {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/electricpoultryy/ElectricPoultryyLib")
             credentials {
+                username = System.getenv("USERNAME")
                 password = System.getenv("GITHUB_TOKEN")
             }
         }
@@ -83,8 +84,6 @@ publishing {
 			groupId = 'xyz.stufforstuff.electricpoultrylib'
 			artifactId = 'electricpoultrylib'
 			from(components.java)
-			@Optional
-			credentials.username
 		}
 	}
 }

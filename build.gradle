@@ -1,6 +1,7 @@
 plugins {
 	id 'net.fabricmc.fabric-loom-remap' version "${loom_version}"
 	id 'maven-publish'
+	id 'java-library'
 }
 
 version = project.mod_version
@@ -73,13 +74,15 @@ publishing {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/electricpoultryy/ElectricPoultryyLib")
             credentials {
-                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
-                password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
+                username = System.getenv("USERNAME")
+                password = System.getenv("TOKEN")
             }
         }
     }
     publications {
-        gpr(MavenPublication) {
+		maven(MavenPublication) {
+			groupId = 'xyz.stufforstuff.electricpoultrylib'
+			artifactId = 'electricpoultrylib'
             from(components.java)
         }
     }

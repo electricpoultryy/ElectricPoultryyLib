@@ -74,7 +74,6 @@ publishing {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/electricpoultryy/ElectricPoultryyLib")
             credentials {
-                username = System.getenv("USERNAME")
                 password = System.getenv("GITHUB_TOKEN")
             }
         }

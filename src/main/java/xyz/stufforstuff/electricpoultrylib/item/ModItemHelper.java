@@ -17,6 +17,8 @@ import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.component.Consumable;
+import net.minecraft.world.item.equipment.ArmorMaterial;
+import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.level.block.Block;
 
 import java.util.function.Function;
@@ -79,6 +81,11 @@ public class ModItemHelper {
 
     public static BlockItem createBlockItem(String itemId, Block block, Item.Properties itemProperties) {
         return registerBlockItem(itemId, block, itemProperties);
+    }
+
+    public static Item createArmorItem(String itemId, ArmorMaterial armorMaterial, ArmorType armorType, Item.Properties itemProperties) {
+        // Add Durability Your Self When Registering
+        return register(itemId, Item::new, itemProperties.humanoidArmor(armorMaterial, armorType));
     }
 
     public static Item register(String name, Function<Item.Properties, Item> itemFactory, Item.Properties settings) {
